@@ -1,11 +1,11 @@
 /*
-Copyright © 2020 leopoldxx
+Copyright 2023 leopoldxx & ksdpmx
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,8 +29,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/go-yaml/yaml"
 	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v3"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/fields"
@@ -50,10 +50,10 @@ As a kubectl plugin, you could call this command like 'kubectl watch', only if y
 `
 
 var logo = `
-____    __    ____  ___   .___________.  ______  __    __                 _______   __   _______  _______ 
+____    __    ____  ___   .___________.  ______  __    __                 _______   __   _______  _______
 \   \  /  \  /   / /   \  |           | /      ||  |  |  |      ___      |       \ |  | |   ____||   ____|
- \   \/    \/   / /  ^  \ |---|  |----||  |---/ |  |__|  |     ( _ )     |  .--.  ||  | |  |__   |  |__   
-  \            / /  /_\  \    |  |     |  |     |   __   |     / _ \/\   |  |  |  ||  | |   __|  |   __|  
+ \   \/    \/   / /  ^  \ |---|  |----||  |---/ |  |__|  |     ( _ )     |  .--.  ||  | |  |__   |  |__
+  \            / /  /_\  \    |  |     |  |     |   __   |     / _ \/\   |  |  |  ||  | |   __|  |   __|
    \    /\    / /  _____  \   |  |     |  \----.|  |  |  |    | (_>  <   |  '--'  ||  | |  |     |  |
     \__/  \__/ /__/     \__\  |__|      \______||__|  |__|     \___/\/   |_______/ |__| |__|     |__|
 
@@ -62,7 +62,7 @@ ____    __    ____  ___   .___________.  ______  __    __                 ______
 var examples = `# watch a namespace scoped resource
 kubectl-watch pod pod1
 
-# watch a clusters scoped resource 
+# watch a clusters scoped resource
 kubectl watch node node1
 
 # watch multiple resources in a same namespace

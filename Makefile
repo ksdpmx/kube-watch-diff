@@ -1,4 +1,4 @@
-# Copyright 2020 leopoldxx
+# Copyright 2023 leopoldxx & ksdpmx
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -57,9 +57,9 @@ lint: golangci-lint
 .PHONY: golangci-lint
 golangci-lint:
 ifeq (, $(shell which golangci-lint))
-	 @{ \
+	@{ \
 		set -e ;\
-		curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOPATH)/bin v1.34.1 ;\
+		curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.52.2 ;\
 	}
 LINT=$(GOBIN)/golangci-lint
 else
